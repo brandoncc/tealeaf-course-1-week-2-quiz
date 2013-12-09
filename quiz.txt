@@ -1,0 +1,68 @@
+1. Name what each of the below is:
+
+  a = 1 # => ex. a is a local variable, and is a Fixnum object with value 1
+  @a = 2  # => a is an instance variable, containing a Fixnum object with a
+          # => value of 2
+  user = User.new # => user is a local variable containing a reference to an
+                  # => instance of the User class
+  user.name # => A call to a method "name" in the object's class (User if the
+            # => same as above line). This method could be a getter for a name
+            # => instance variable, or any other method named 'name'.
+  user.name = "Joe" # => A call to the setter method for the user object's
+                    # => instance variable 'name'
+
+2. How does a class mixin a module?
+  # => A module is mixed in using 'include'.
+
+3. What's the difference between class variables and instance variables?
+  # => Class variables contain are used by all instances of that class. A class
+  # => variable has only one value. Instance variables are initialized and
+  # => defined within each instance of a class. Instance variable values may
+  # => vary across instances.
+
+4. What does attr_accessor do?
+  # => Automatically creates getter and setter methods for the instance
+  # => variable passed in.
+
+5. How would you describe this expression: Dog.some_method
+  # => A method call to the class method named 'some_method', defined in the
+  # => 'Dog' class.
+
+6. In Ruby, what's the difference between subclassing and mixing in modules?
+  # => You may inherit from only one superclass (which may then inherit from
+  # => its own superclass).  You may mixin as many modules as necessary.
+
+7. Given that I can instantiate a user like this: User.new('Bob'), what would
+   the initialize method look like for the User class?
+   # => def initialize(name)
+   # =>   @name = name
+   # => end
+
+8. Can you call instance methods of the same class from other instance methods
+   in that class?
+  # => class MyClass
+  # =>   def my_method
+  # =>     my_other_method
+  # =>   end
+  # =>
+  # =>   def my_other_method
+  # =>     puts 'See? It works!'
+  # =>   end
+  # => end
+
+  # => my_class = MyClass.new
+
+  # => my_class.my_method
+
+  # => #=> See? It works
+
+9. When you get stuck, what's the process you use to try to trap the error?
+  # => 1) Add require 'pry' to the top of the source file.
+  # => 2) Identify the line that is creating the error (Not always easy to
+  # =>    figure this out, if the error is not throwing an Exception. Sometimes it takes multiple attempts.)
+  # => 3) Add binding.pry just above the problem line, in the source file.
+  # => 4) Run application in irb.
+  # => 5) When pry executes, check each variable variable to see if any are not
+  # =>    what they are supposed to be. If that is not the problem, start
+  # =>    running problem methods by hand, until you get a return that is wrong.
+  # => 6) Identify why that return or action was wrong, then fix it.

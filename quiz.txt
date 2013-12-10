@@ -15,14 +15,14 @@
   # => A module is mixed in using 'include'.
 
 3. What's the difference between class variables and instance variables?
-  # => Class variables contain are used by all instances of that class. A class
+  # => Class variables are used by all instances of that class. A class
   # => variable has only one value. Instance variables are initialized and
   # => defined within each instance of a class. Instance variable values may
   # => vary across instances.
 
 4. What does attr_accessor do?
   # => Automatically creates getter and setter methods for the instance
-  # => variable passed in.
+  # => variable (symbol) passed in.
 
 5. How would you describe this expression: Dog.some_method
   # => A method call to the class method named 'some_method', defined in the
@@ -40,29 +40,32 @@
 
 8. Can you call instance methods of the same class from other instance methods
    in that class?
-  # => class MyClass
-  # =>   def my_method
-  # =>     my_other_method
-  # =>   end
-  # =>
-  # =>   def my_other_method
-  # =>     puts 'See? It works!'
-  # =>   end
-  # => end
+  # => Yes, for example
 
-  # => my_class = MyClass.new
+  > class MyClass
+  >   def my_method
+  >     my_other_method
+  >   end
+  >
+  >   def my_other_method
+  >     puts 'See? It works!'
+  >   end
+  > end
 
-  # => my_class.my_method
+  > my_class = MyClass.new
 
-  # => #=> See? It works
+  > my_class.my_method
+
+  > #=> See? It works
 
 9. When you get stuck, what's the process you use to try to trap the error?
-  # => 1) Add require 'pry' to the top of the source file.
+  # => 1) Add "require 'pry'" to the top of the source file.
   # => 2) Identify the line that is creating the error (Not always easy to
-  # =>    figure this out, if the error is not throwing an Exception. Sometimes it takes multiple attempts.)
+  # =>    figure this out, if the error is not throwing an Exception. Sometimes
+  # =>    it takes multiple attempts.)
   # => 3) Add binding.pry just above the problem line, in the source file.
   # => 4) Run application in irb.
-  # => 5) When pry executes, check each variable variable to see if any are not
+  # => 5) When pry executes, check each variable value to see if any are not
   # =>    what they are supposed to be. If that is not the problem, start
   # =>    running problem methods by hand, until you get a return that is wrong.
   # => 6) Identify why that return or action was wrong, then fix it.
